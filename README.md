@@ -1,2 +1,69 @@
 # go-task-list
- simple Go Task list application , running with a local db (sql-lite) and can be run by an adjoining shell script. Please read the howTo file to run the application.
+ Simple Go Task list application , running with a local db (sqlite) and can be run by an adjoining shell script. Please read the howTo file to run the application.
+
+# Architecture
+The architecture is generally like the Model View Controller without the view or the Model Service Controller Pattern.
+
+### Model
+Model Contains the Blueprint of how the data element is stored , used, viewed and manipulated. Models can be found in the `model folder`.
+
+### Controller
+Controller here is in the main go file `gotasklistcontroller.go` . Controller controls the flow of every request that comes in to the server through the port.
+
+### Service
+Service is the part which actually perform the task . Here you can find service source codes in `handlers folder` which in turn call the `endpoints folder`. All the GET,POST,PUT,DELETE request get catered through these folders and packages.
+
+### Misc parts of Architecture
+```
+middleware
+utilities
+```
+The middleware folder contains source code which implements the middleware layer for the request . Panic and error conditions are handled through the middleware in this project.
+utilities folder contain multiple codes which are reused in various places adn thus stored in a common package to be consumed.
+
+# ENDPOINTS
+Parent link - http://localhost:3000
+This will get you the Homepage , which briefly lists all the endpoints.
+
+add the tailing part if required
+
+## Request 
+In Head of the Request Add **Content-Type : application/json** .
+In Body of the Request in json format provide :
+```
+{
+	"TaskTitle":"",
+	"DueDate":"",
+	"TaskDone":false
+}
+```
+**NOTE** :
+1. DueDate should always be in YYYY-MM-DD formatted string.
+
+
+### GET
+`/tasklist/{type}`
+
+#### type
+- all : This gets all the tasks in the Database
+- alltodo : This gets all the tasks that have not been completed yet
+- today : This gives you the list of tasks which are due today
+- overdue : This gives you the list of tasks which are past their due date.
+
+### POST (Create)
+`/tasklist` : send it along with the body to create a task.
+
+### PUT (Update)
+`/tasklist` : send it along with the body to update a task.
+
+### DELETE 
+`/tasklist` : send it along with the body to delete the task.
+
+# HOW TO
+Please find all the information on how to run the application here : 
+If you want to look at the code please clone the repo and go :p ahead!
+
+### Download the Executables
+In the above Repository , please find the `go_task_list_executables` folders this contains both windows and linux executables. Please copy the required OS specific folder to a loaction of your comfort. 
+
+### Run the Application
