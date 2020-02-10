@@ -20,9 +20,13 @@ const (
 )
 
 type taskHandlerInput struct {
-	TaskTitle string
-	DueDate   string
-	TaskDone  bool
+	TaskTitle string `json:"taskTitle" bson:"taskTitle"`
+	DueDate   string `json:"dueDate" bson:"dueDate"`
+	TaskDone  bool   `json:"taskDone" bson:"taskDone"`
+}
+
+type successMessage struct {
+	Message string `json:"message" bson:"message"`
 }
 
 var logFile *os.File
@@ -67,7 +71,7 @@ func UpdateTask(w http.ResponseWriter, r *http.Request, t *taskHandlerInput, db 
 	log.Info("Input Validated in Update Request")
 
 	dd, _ := time.Parse(layoutISO, t.DueDate)
-	unixdd := dd.Unix()
+	unixdd := dd.Unix() + 66599
 	nt := models.NewTask(t.TaskTitle, unixdd, t.TaskDone)
 
 	var ct models.Task
@@ -91,6 +95,10 @@ func UpdateTask(w http.ResponseWriter, r *http.Request, t *taskHandlerInput, db 
 		http.Error(w, "Error Executing Update Statement", http.StatusInternalServerError)
 	}
 	log.Info("UPDATE Successful!!")
+	sm := successMessage{Message: "Update Completed Successfully for " + nt.TaskTitle}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusNoContent)
+	json.NewEncoder(w).Encode(sm)
 }
 
 //CreateTask function performs updation task on the task list
@@ -103,7 +111,7 @@ func CreateTask(w http.ResponseWriter, r *http.Request, t *taskHandlerInput, db 
 	}
 	log.Info("Input Validated in Create Request")
 	dd, _ := time.Parse(layoutISO, t.DueDate)
-	unixdd := dd.Unix()
+	unixdd := dd.Unix() + 66599
 	nt := models.NewTask(t.TaskTitle, unixdd, t.TaskDone)
 
 	statement, err := db.Prepare("INSERT INTO TaskList (TaskTitle, DueDate,TaskDone,TimeCreatedModified) VALUES (?, ?, ?, ?)")
@@ -119,6 +127,10 @@ func CreateTask(w http.ResponseWriter, r *http.Request, t *taskHandlerInput, db 
 		http.Error(w, "Error Executing Create Statement", http.StatusInternalServerError)
 	}
 	log.Info("New Task Created!!")
+	sm := successMessage{Message: "Create Completed Successfully for " + nt.TaskTitle}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(sm)
 }
 
 //DeleteTask function performs updation task on the task list
@@ -144,6 +156,10 @@ func DeleteTask(w http.ResponseWriter, r *http.Request, t *taskHandlerInput, db 
 		http.Error(w, "Error Executing Delete Statement", http.StatusInternalServerError)
 	}
 	log.Info("Task Deleted!!")
+	sm := successMessage{Message: "Record Deleted with Task Title : " + t.TaskTitle}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusNoContent)
+	json.NewEncoder(w).Encode(sm)
 }
 
 //TaskListDMLHandler functions handles all the Data Manipulation request that come in for task-list

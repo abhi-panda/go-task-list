@@ -1,0 +1,41 @@
+// package main
+
+// import (
+// 	"fmt"
+// 	"time"
+// )
+
+// const (
+// 	layoutISO = "2006-01-02"
+// )
+
+// func main() {
+// 	// t := time.Now()
+// 	// fmt.Println(t)
+// 	// fmt.Println(t.Format(layoutISO))
+// 	// unixt := t.Unix()
+// 	// fmt.Println(unixt)
+// 	// fmt.Println(time.Unix(unixt, 0))
+// 	// fmt.Println(time.Unix(unixt, 0).Format(layoutISO))
+
+// 	// te, _ := time.Parse(layoutISO, "2017-01-02")
+// 	// fmt.Println(te)
+// 	// fmt.Println(te.Unix())
+// 	// cet := te.Unix() + 66599
+// 	// fmt.Println(cet)
+// 	// fmt.Println(time.Unix(cet, 0))
+// 	// fmt.Println(time.Unix(cet, 0).Format(layoutISO))
+
+// 	t := time.Now()
+// 	fmt.Println(t)
+// 	var result int64
+// 	result += int64((t.Hour() * 3600))
+// 	result += int64((t.Minute() * 60))
+// 	result += int64((t.Second()))
+// 	fmt.Println(result)
+// 	fmt.Println(t.Unix() - (result + 1))
+// 	fmt.Println(time.Unix(t.Unix()-(result+1), 0))
+// 	fmt.Println(t.Unix() + (86399 - result))
+// 	fmt.Println(time.Unix(t.Unix()+(86399-result), 0))
+
+// }

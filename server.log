@@ -1,0 +1,8 @@
+time="2020-02-10T14:26:50+05:30" level=info msg="Server Started at : %!(EXTRA string=:3000)"
+time="2020-02-10T14:26:50+05:30" level=info msg="Please use https://localhost:%!(EXTRA string=:3000)"
+::1 - - [10/Feb/2020:14:27:00 +0530] "GET / HTTP/1.1" 404 19
+::1 - - [10/Feb/2020:14:27:01 +0530] "GET / HTTP/1.1" 404 19
+::1 - - [10/Feb/2020:14:27:01 +0530] "GET /favicon.ico HTTP/1.1" 404 19
+::1 - - [10/Feb/2020:14:27:35 +0530] "GET /tasklist?type=all HTTP/1.1" 405 0
+::1 - - [10/Feb/2020:14:27:40 +0530] "GET /tasklist?type=all HTTP/1.1" 405 0
+::1 - - [10/Feb/2020:14:27:41 +0530] "GET /tasklist?type=all HTTP/1.1" 405 0
