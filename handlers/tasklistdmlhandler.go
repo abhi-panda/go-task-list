@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"go-task-list/models"
+	"go-task-list/utilities"
 	"io"
 	"net/http"
 	"os"
@@ -30,7 +31,7 @@ type successMessage struct {
 }
 
 var logFile *os.File
-var errors map[string]string
+var errors map[string]string = make(map[string]string)
 
 func mapToString(m map[string]string) string {
 	b := new(bytes.Buffer)
@@ -53,6 +54,10 @@ func ValidateTaskEntry(t *taskHandlerInput) bool {
 		errors["dueDateError"] = "The Task Due Date field is required."
 	}
 
+	if !utilities.CheckDateStringFormat(t.DueDate) {
+		errors["dueDateError"] = "The Due Date is not of pattern YYYY-MM-DD"
+	}
+
 	if len(errors) > 0 {
 		return false
 	}
@@ -67,38 +72,39 @@ func UpdateTask(w http.ResponseWriter, r *http.Request, t *taskHandlerInput, db 
 	if !validInput {
 		log.Error(mapToString(errors))
 		http.Error(w, mapToString(errors), http.StatusInternalServerError)
-	}
-	log.Info("Input Validated in Update Request")
-
-	dd, _ := time.Parse(layoutISO, t.DueDate)
-	unixdd := dd.Unix() + 66599
-	nt := models.NewTask(t.TaskTitle, unixdd, t.TaskDone)
-
-	var ct models.Task
-
-	if err := db.QueryRow("SELECT * FROM TaskList WHERE TaskTitle = ", nt.TaskTitle).Scan(&ct); err == sql.ErrNoRows {
-		log.Error("Task with Title " + nt.TaskTitle + " Not Found for Update!")
-		http.Error(w, "Task with Title "+nt.TaskTitle+" Not Found for Update!", http.StatusInternalServerError)
-	}
-
-	log.Info("Record Found in DB!")
-	statement, err := db.Prepare("UPDATE TaskList SET DueDate = ?, TaskDone = ?,TimeCreatedModified = ? WHERE TaskTitle = ?")
-	if err != nil {
-		log.Error("Error Creating Update Statement")
-		http.Error(w, "Error Creating Update Statement", http.StatusInternalServerError)
-	}
-
-	_, execerr := statement.Exec(nt.DueDate, nt.TaskDone, nt.TimeCreatedModified, nt.TaskTitle)
-
-	if execerr != nil {
-		log.Error("Error Executing Update Statement")
-		http.Error(w, "Error Executing Update Statement", http.StatusInternalServerError)
 	} else {
-		log.Info("UPDATE Successful!!")
-		sm := successMessage{Message: "Update Completed Successfully for " + nt.TaskTitle}
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusNoContent)
-		json.NewEncoder(w).Encode(sm)
+		log.Info("Input Validated in Update Request")
+
+		dd, _ := time.Parse(layoutISO, t.DueDate)
+		unixdd := dd.Unix() + 66599
+		nt := models.NewTask(t.TaskTitle, unixdd, t.TaskDone)
+
+		var ct models.Task
+
+		if err := db.QueryRow("SELECT * FROM TaskList WHERE TaskTitle = ", nt.TaskTitle).Scan(&ct); err == sql.ErrNoRows {
+			log.Error("Task with Title " + nt.TaskTitle + " Not Found for Update!")
+			http.Error(w, "Task with Title "+nt.TaskTitle+" Not Found for Update!", http.StatusInternalServerError)
+		}
+
+		log.Info("Record Found in DB!")
+		statement, err := db.Prepare("UPDATE TaskList SET DueDate = ?, TaskDone = ?,TimeCreatedModified = ? WHERE TaskTitle = ?")
+		if err != nil {
+			log.Error("Error Creating Update Statement")
+			http.Error(w, "Error Creating Update Statement", http.StatusInternalServerError)
+		}
+
+		_, execerr := statement.Exec(nt.DueDate, nt.TaskDone, nt.TimeCreatedModified, nt.TaskTitle)
+
+		if execerr != nil {
+			log.Error("Error Executing Update Statement")
+			http.Error(w, "Error Executing Update Statement", http.StatusInternalServerError)
+		} else {
+			log.Info("UPDATE Successful!!")
+			sm := successMessage{Message: "Update Completed Successfully for " + nt.TaskTitle}
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusNoContent)
+			json.NewEncoder(w).Encode(sm)
+		}
 	}
 
 }
@@ -110,29 +116,30 @@ func CreateTask(w http.ResponseWriter, r *http.Request, t *taskHandlerInput, db 
 	if !validInput {
 		log.Error(mapToString(errors))
 		http.Error(w, mapToString(errors), http.StatusInternalServerError)
-	}
-	log.Info("Input Validated in Create Request")
-	dd, _ := time.Parse(layoutISO, t.DueDate)
-	unixdd := dd.Unix() + 66599
-	nt := models.NewTask(t.TaskTitle, unixdd, t.TaskDone)
-
-	statement, err := db.Prepare("INSERT INTO TaskList (TaskTitle, DueDate,TaskDone,TimeCreatedModified) VALUES (?, ?, ?, ?)")
-	if err != nil {
-		log.Error("Error Creating Create Statement")
-		http.Error(w, "Error Creating Create Statement", http.StatusInternalServerError)
-	}
-
-	_, execerr := statement.Exec(nt.TaskTitle, nt.DueDate, nt.TaskDone, nt.TimeCreatedModified)
-
-	if execerr != nil {
-		log.Error("Error Executing Create Statement")
-		http.Error(w, "Error Executing Create Statement", http.StatusInternalServerError)
 	} else {
-		log.Info("New Task Created!!")
-		sm := successMessage{Message: "Create Completed Successfully for " + nt.TaskTitle}
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusCreated)
-		json.NewEncoder(w).Encode(sm)
+		log.Info("Input Validated in Create Request")
+		dd, _ := time.Parse(layoutISO, t.DueDate)
+		unixdd := dd.Unix() + 66599
+		nt := models.NewTask(t.TaskTitle, unixdd, t.TaskDone)
+
+		statement, err := db.Prepare("INSERT INTO TaskList (TaskTitle, DueDate,TaskDone,TimeCreatedModified) VALUES (?, ?, ?, ?)")
+		if err != nil {
+			log.Error("Error Creating Create Statement")
+			http.Error(w, "Error Creating Create Statement", http.StatusInternalServerError)
+		}
+
+		_, execerr := statement.Exec(nt.TaskTitle, nt.DueDate, nt.TaskDone, nt.TimeCreatedModified)
+
+		if execerr != nil {
+			log.Error("Error Executing Create Statement")
+			http.Error(w, "Error Executing Create Statement", http.StatusInternalServerError)
+		} else {
+			log.Info("New Task Created!!")
+			sm := successMessage{Message: "Create Completed Successfully for " + nt.TaskTitle}
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusCreated)
+			json.NewEncoder(w).Encode(sm)
+		}
 	}
 
 }
