@@ -1,5 +1,5 @@
 # go-task-list
- Simple Go Task list application , running with a local db (sqlite) and can be run by an adjoining shell script. Please read the howTo file to run the application.
+ Simple Go Task list application , running with a local db (sqlite) and can be run by an adjoining shell script. Please read the ([https://github.com/abhi-panda/go-task-list/blob/master/README.md#how-to]) Section to download and run the application.
 
 # Architecture
 The architecture is generally like the Model View Controller without the view or the Model Service Controller Pattern.
