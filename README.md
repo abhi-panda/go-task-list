@@ -39,7 +39,7 @@ In Body of the Request in json format provide :
 ```
 **NOTE** :
 1. DueDate should always be in YYYY-MM-DD formatted string.
-
+2. TaskDone when first creating should always be false.
 
 ### GET
 `/tasklist/{type}`
@@ -60,7 +60,7 @@ In Body of the Request in json format provide :
 `/tasklist` : send it along with the body to delete the task.
 
 # HOW TO
-Please find all the information on how to run the application here : 
+Please find all the information on how to download and run the application here.
 If you want to look at the code please clone the repo and go :p ahead!
 
 ### Download the Executables
