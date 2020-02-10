@@ -93,12 +93,14 @@ func UpdateTask(w http.ResponseWriter, r *http.Request, t *taskHandlerInput, db 
 	if execerr != nil {
 		log.Error("Error Executing Update Statement")
 		http.Error(w, "Error Executing Update Statement", http.StatusInternalServerError)
+	} else {
+		log.Info("UPDATE Successful!!")
+		sm := successMessage{Message: "Update Completed Successfully for " + nt.TaskTitle}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusNoContent)
+		json.NewEncoder(w).Encode(sm)
 	}
-	log.Info("UPDATE Successful!!")
-	sm := successMessage{Message: "Update Completed Successfully for " + nt.TaskTitle}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusNoContent)
-	json.NewEncoder(w).Encode(sm)
+
 }
 
 //CreateTask function performs updation task on the task list
@@ -125,12 +127,14 @@ func CreateTask(w http.ResponseWriter, r *http.Request, t *taskHandlerInput, db 
 	if execerr != nil {
 		log.Error("Error Executing Create Statement")
 		http.Error(w, "Error Executing Create Statement", http.StatusInternalServerError)
+	} else {
+		log.Info("New Task Created!!")
+		sm := successMessage{Message: "Create Completed Successfully for " + nt.TaskTitle}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusCreated)
+		json.NewEncoder(w).Encode(sm)
 	}
-	log.Info("New Task Created!!")
-	sm := successMessage{Message: "Create Completed Successfully for " + nt.TaskTitle}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(sm)
+
 }
 
 //DeleteTask function performs updation task on the task list
@@ -154,12 +158,14 @@ func DeleteTask(w http.ResponseWriter, r *http.Request, t *taskHandlerInput, db 
 	if execerr != nil {
 		log.Error("Error Executing Delete Statement")
 		http.Error(w, "Error Executing Delete Statement", http.StatusInternalServerError)
+	} else {
+		log.Info("Task Deleted!!")
+		sm := successMessage{Message: "Record Deleted with Task Title : " + t.TaskTitle}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusNoContent)
+		json.NewEncoder(w).Encode(sm)
 	}
-	log.Info("Task Deleted!!")
-	sm := successMessage{Message: "Record Deleted with Task Title : " + t.TaskTitle}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusNoContent)
-	json.NewEncoder(w).Encode(sm)
+
 }
 
 //TaskListDMLHandler functions handles all the Data Manipulation request that come in for task-list

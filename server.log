@@ -1,8 +1,9 @@
-time="2020-02-10T14:26:50+05:30" level=info msg="Server Started at : %!(EXTRA string=:3000)"
-time="2020-02-10T14:26:50+05:30" level=info msg="Please use https://localhost:%!(EXTRA string=:3000)"
-::1 - - [10/Feb/2020:14:27:00 +0530] "GET / HTTP/1.1" 404 19
-::1 - - [10/Feb/2020:14:27:01 +0530] "GET / HTTP/1.1" 404 19
-::1 - - [10/Feb/2020:14:27:01 +0530] "GET /favicon.ico HTTP/1.1" 404 19
-::1 - - [10/Feb/2020:14:27:35 +0530] "GET /tasklist?type=all HTTP/1.1" 405 0
-::1 - - [10/Feb/2020:14:27:40 +0530] "GET /tasklist?type=all HTTP/1.1" 405 0
-::1 - - [10/Feb/2020:14:27:41 +0530] "GET /tasklist?type=all HTTP/1.1" 405 0
+time="2020-02-10T21:01:37+05:30" level=info msg="New Table Created!!"
+time="2020-02-10T21:01:37+05:30" level=info msg="Server Started at :3000"
+time="2020-02-10T21:01:37+05:30" level=info msg="Please use https://localhost:3000"
+::1 - - [10/Feb/2020:21:02:48 +0530] "GET /tasklist/all HTTP/1.1" 200 87
+time="2020-02-10T21:03:57+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-10T21:03:57+05:30" level=info msg="Record Found in DB!"
+time="2020-02-10T21:03:57+05:30" level=info msg="UPDATE Successful!!"
+::1 - - [10/Feb/2020:21:03:57 +0530] "PUT /tasklist HTTP/1.1" 204 0
+::1 - - [10/Feb/2020:21:04:19 +0530] "GET /tasklist/all HTTP/1.1" 200 86
