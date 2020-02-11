@@ -13,7 +13,8 @@ GET_ALL_TODO_URL=${API_URL}/tasklist/alltodo
 GET_BY_TODAY_URL=${API_URL}/tasklist/today
 GET_OVERDUE_URL=${API_URL}/tasklist/overdue
 DML_URL=${API_URL}/tasklist
-
+Date=$(date +%Y%m%d)
+echo $Date
 command=$1
 
 echo -e "[INFO] - `date` - Logs Starting" >> ./shell-logs/tasklist-$Date.logs
