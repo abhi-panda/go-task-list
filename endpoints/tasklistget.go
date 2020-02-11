@@ -19,7 +19,7 @@ func GetAllTasks(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	getAllResults := make([]models.ResultantTask, 0, 5)
 	rows, queryerr := db.Query("SELECT TimeCreatedModified, TaskTitle, DueDate, TaskDone FROM TaskList")
 	if queryerr != nil {
-		log.Error("Error Querying Get All Statement")
+		log.Error("Error Querying Get All Statement", queryerr)
 		http.Error(w, "Error Querying Get All Statement", http.StatusInternalServerError)
 	}
 
@@ -39,7 +39,7 @@ func GetAllTodoTasks(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	getAllResults := make([]models.ResultantTask, 0, 5)
 	rows, queryerr := db.Query("SELECT TimeCreatedModified, TaskTitle, DueDate, TaskDone FROM TaskList WHERE TaskDone = false")
 	if queryerr != nil {
-		log.Error("Error Querying Get All Statement")
+		log.Error("Error Querying Get All Statement", queryerr)
 		http.Error(w, "Error Querying Get All Statement", http.StatusInternalServerError)
 	}
 
@@ -63,7 +63,7 @@ func GetByTodayTasks(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 
 	rows, queryerr := db.Query("SELECT TimeCreatedModified, TaskTitle, DueDate, TaskDone FROM TaskList WHERE DueDate = " + strconv.FormatInt(querytime, 10) + " AND TaskDone = false")
 	if queryerr != nil {
-		log.Error("Error Querying Get by Today Statement")
+		log.Error("Error Querying Get by Today Statement", queryerr)
 		http.Error(w, "Error Querying Get by Today Statement", http.StatusInternalServerError)
 	}
 
@@ -87,7 +87,7 @@ func GetOverdueTasks(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 
 	rows, queryerr := db.Query("SELECT TimeCreatedModified, TaskTitle, DueDate, TaskDone FROM TaskList WHERE DueDate < " + strconv.FormatInt(querytime, 10) + " AND TaskDone = false")
 	if queryerr != nil {
-		log.Error("Error Querying Get Overdue Statement")
+		log.Error("Error Querying Get Overdue Statement", queryerr)
 		http.Error(w, "Error Querying Get Overdue Statement", http.StatusInternalServerError)
 	}
 
@@ -100,6 +100,26 @@ func GetOverdueTasks(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(getAllResults)
+}
+
+//GetByTitle provides the searched task from the db with matching title
+func GetByTitle(w http.ResponseWriter, r *http.Request, db *sql.DB, title string) {
+	getResult := models.ResultantTask{TimeCreatedModified: "", DueDate: "", TaskTitle: "", TaskDone: false}
+	rows, queryerr := db.Query("SELECT TimeCreatedModified, TaskTitle, DueDate, TaskDone FROM TaskList WHERE TaskTitle = '" + title + "' ;")
+	if queryerr != nil {
+		log.Error("Error Querying Get By Title Statement", queryerr)
+		http.Error(w, "Error Querying Get By Title Statement", http.StatusInternalServerError)
+	} else {
+		rows.Next()
+		t := models.Task{TimeCreatedModified: 0, TaskTitle: "", DueDate: 0, TaskDone: false}
+		rows.Scan(&t.TimeCreatedModified, &t.TaskTitle, &t.DueDate, &t.TaskDone)
+		rt := models.ConvertToResultantTask(t)
+		getResult = rt
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(getResult)
+	}
+
 }
 
 func init() {

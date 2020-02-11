@@ -26,6 +26,7 @@ func TestTaskListGetHandler(t *testing.T) {
 			{"alltodo", true},
 			{"today", true},
 			{"overdue", true},
+			{"Task1", true},
 		}
 
 		for _, tc := range tt {

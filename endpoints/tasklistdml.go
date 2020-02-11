@@ -82,21 +82,21 @@ func UpdateTask(w http.ResponseWriter, r *http.Request, t *TaskHandlerInput, db 
 		var ct models.Task
 
 		if err := db.QueryRow("SELECT * FROM TaskList WHERE TaskTitle = ", nt.TaskTitle).Scan(&ct); err == sql.ErrNoRows {
-			log.Error("Task with Title " + nt.TaskTitle + " Not Found for Update!")
+			log.Error("Task with Title "+nt.TaskTitle+" Not Found for Update!", err)
 			http.Error(w, "Task with Title "+nt.TaskTitle+" Not Found for Update!", http.StatusInternalServerError)
 		}
 
 		log.Info("Record Found in DB!")
 		statement, err := db.Prepare("UPDATE TaskList SET DueDate = ?, TaskDone = ?,TimeCreatedModified = ? WHERE TaskTitle = ?")
 		if err != nil {
-			log.Error("Error Creating Update Statement")
+			log.Error("Error Creating Update Statement", err)
 			http.Error(w, "Error Creating Update Statement", http.StatusInternalServerError)
 		}
 
 		_, execerr := statement.Exec(nt.DueDate, nt.TaskDone, nt.TimeCreatedModified, nt.TaskTitle)
 
 		if execerr != nil {
-			log.Error("Error Executing Update Statement")
+			log.Error("Error Executing Update Statement", execerr)
 			http.Error(w, "Error Executing Update Statement", http.StatusInternalServerError)
 		} else {
 			log.Info("UPDATE Successful!!")
@@ -124,14 +124,14 @@ func CreateTask(w http.ResponseWriter, r *http.Request, t *TaskHandlerInput, db 
 
 		statement, err := db.Prepare("INSERT INTO TaskList (TaskTitle, DueDate,TaskDone,TimeCreatedModified) VALUES (?, ?, ?, ?)")
 		if err != nil {
-			log.Error("Error Creating Create Statement")
+			log.Error("Error Creating Create Statement", err)
 			http.Error(w, "Error Creating Create Statement", http.StatusInternalServerError)
 		}
 
 		_, execerr := statement.Exec(nt.TaskTitle, nt.DueDate, nt.TaskDone, nt.TimeCreatedModified)
 
 		if execerr != nil {
-			log.Error("Error Executing Create Statement")
+			log.Error("Error Executing Create Statement", execerr)
 			http.Error(w, "Error Executing Create Statement", http.StatusInternalServerError)
 		} else {
 			log.Info("New Task Created!!")
@@ -150,20 +150,20 @@ func DeleteTask(w http.ResponseWriter, r *http.Request, t *TaskHandlerInput, db 
 	var ct models.Task
 
 	if err := db.QueryRow("SELECT * FROM TaskList WHERE TaskTitle = ", t.TaskTitle).Scan(&ct); err == sql.ErrNoRows {
-		log.Error("Task with Title " + t.TaskTitle + " Not Found for deletion!")
+		log.Error("Task with Title "+t.TaskTitle+" Not Found for deletion!", err)
 		http.Error(w, "Task with Title "+t.TaskTitle+" Not Found for deletion!", http.StatusInternalServerError)
 	}
 	log.Info("Record Found in DB!")
 
 	statement, err := db.Prepare("DELETE FROM TaskList WHERE TaskTitle = ?")
 	if err != nil {
-		log.Error("Error Creating Delete Statement")
+		log.Error("Error Creating Delete Statement", err)
 		http.Error(w, "Error Creating Delete Statement", http.StatusInternalServerError)
 	}
 
 	_, execerr := statement.Exec(t.TaskTitle)
 	if execerr != nil {
-		log.Error("Error Executing Delete Statement")
+		log.Error("Error Executing Delete Statement", execerr)
 		http.Error(w, "Error Executing Delete Statement", http.StatusInternalServerError)
 	} else {
 		log.Info("Task Deleted!!")

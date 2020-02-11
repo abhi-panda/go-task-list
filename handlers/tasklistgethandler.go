@@ -28,10 +28,7 @@ func TaskListGetHandler(db *sql.DB) http.Handler {
 		case "alltodo":
 			endpoints.GetAllTodoTasks(w, r, db)
 		default:
-			{
-				log.Error("Method Not permitted! Wrong type Value")
-				http.Error(w, "Method Not permitted! Wrong type Value", http.StatusInternalServerError)
-			}
+			endpoints.GetByTitle(w, r, db, v["type"])
 		}
 	})
 }

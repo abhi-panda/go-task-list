@@ -21,7 +21,7 @@ func TaskListDMLHandler(db *sql.DB) http.Handler {
 		decoder := json.NewDecoder(r.Body)
 		err := decoder.Decode(&t)
 		if err != nil {
-			log.Error("Request Body not according to the contract")
+			log.Error("Request Body not according to the contract", err)
 			http.Error(w, "Request Body not according to the contract", http.StatusInternalServerError)
 		}
 

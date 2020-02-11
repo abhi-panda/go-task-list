@@ -125,3 +125,45 @@ time="2020-02-10T23:44:30+05:30" level=error msg="dueDateError=\"The Due Date is
 ::1 - - [10/Feb/2020:23:44:30 +0530] "POST /tasklist HTTP/1.1" 500 58
 time="2020-02-10T23:44:46+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
 ::1 - - [10/Feb/2020:23:44:46 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T13:18:09+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T13:18:09+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T13:18:09+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T13:18:32+05:30" level=error msg="Error Querying Get By Title Statement"
+::1 - - [11/Feb/2020:13:18:32 +0530] "GET /tasklist/Task1 HTTP/1.1" 500 38
+time="2020-02-11T13:20:08+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T13:20:08+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T13:20:08+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T13:20:17+05:30" level=error msg="Error Querying Get By Title Statement"
+::1 - - [11/Feb/2020:13:20:17 +0530] "GET /tasklist/Task1 HTTP/1.1" 500 38
+::1 - - [11/Feb/2020:13:20:23 +0530] "GET /tasklist/all HTTP/1.1" 200 539
+time="2020-02-11T13:20:33+05:30" level=error msg="Error Querying Get By Title Statement"
+::1 - - [11/Feb/2020:13:20:33 +0530] "GET /tasklist/Task1 HTTP/1.1" 500 38
+time="2020-02-11T13:21:23+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T13:21:23+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T13:21:23+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T13:21:28+05:30" level=error msg="Error Querying Get By Title Statement"
+::1 - - [11/Feb/2020:13:21:28 +0530] "GET /tasklist/Task1 HTTP/1.1" 500 38
+time="2020-02-11T13:22:45+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T13:22:45+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T13:22:45+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T13:22:55+05:30" level=error msg="Error Querying Get By Title Statementno such column: Task1"
+::1 - - [11/Feb/2020:13:22:55 +0530] "GET /tasklist/Task1 HTTP/1.1" 500 38
+time="2020-02-11T13:27:48+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T13:27:48+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T13:27:48+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T13:27:54+05:30" level=error msg="Error Querying Get By Title Statementincomplete input"
+::1 - - [11/Feb/2020:13:27:54 +0530] "GET /tasklist/Task1 HTTP/1.1" 500 38
+time="2020-02-11T13:28:46+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T13:28:46+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T13:28:46+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T13:28:51+05:30" level=error msg="Error Querying Get By Title Statementno such column: Task1"
+::1 - - [11/Feb/2020:13:28:51 +0530] "GET /tasklist/Task1 HTTP/1.1" 500 38
+time="2020-02-11T13:34:21+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T13:34:21+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T13:34:21+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T13:34:26+05:30" level=error msg="Error Querying Get By Title Statementno such column: Task1"
+::1 - - [11/Feb/2020:13:34:26 +0530] "GET /tasklist/Task1 HTTP/1.1" 500 38
+time="2020-02-11T13:35:17+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T13:35:17+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T13:35:17+05:30" level=info msg="Please use https://localhost:3000"
+::1 - - [11/Feb/2020:13:35:26 +0530] "GET /tasklist/Task1 HTTP/1.1" 200 88
