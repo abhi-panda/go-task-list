@@ -66,13 +66,47 @@ To run these test suite , after cloning / downloading please traverse to the req
 ```
 go test -v
 ```
+# Logging
+Logging is an important part for every application , so keeping that in mind when the application and the CLI is run , logs are maintained for both seperately in the same folder location. 
+```
+server.log
+shell-logs/tasklist-YYYYMMDD.logs
+```
+server.logs maintains the server side logs
+and shell-logs folder contains logs accumulated date wise for the CLI.
 
 # HOW TO
 Please find all the information on how to download and run the application here.
 If you want to look at the code please clone the repo and go :p ahead!
 
 ### Download the Executables
-In the above Repository , please find the `go_task_list_executables` folders this contains both windows and linux executables. Please copy the required OS specific folder to a loaction of your comfort. 
+In the above Repository , please find the `go_task_list_executables` folder .This contains both windows and linux executables. Please get the required OS specific folder to a location of your comfort. 
 
 ### Run the Application
-For now Linux tasklist.sh has been created as a Command line Interface.
+For now , Linux specific shellscript tasklist.sh has been created as a Command line Interface. In Future similar .psh will be created for Windows OS. 
+Please make sure appropriate permissions are provided to the folder entirely and file manipulation is in purview.
+
+To Start the Application , Please open two terminals and traverse to the folder where you have the downloaded executable folder
+
+START SERVER :
+Run `./go-task-list`
+
+and that is it , you will see Verbose logging on this screen for requests , errors and handled panics.
+
+USE Shell Script CLI :
+Run `./tasklist.sh {Options}`
+
+:: Options ::
+1. add - To create a Task
+2. list (Make choice when provided)
+	- All Tasks
+	- All Todo Tasks
+	- Tasks Due Today
+	- Tasks Overdue
+	- Task By Title
+3. done : Mark a Task Done
+4. updateduedate : Update tasks due date
+5. delete : Delete a Task
+
+[Exit Code Documentation for CLI](go_task_list_executables/linux_amd64/exit_codes.md)
+
