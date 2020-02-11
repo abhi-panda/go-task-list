@@ -75,3 +75,4 @@ If you want to look at the code please clone the repo and go :p ahead!
 In the above Repository , please find the `go_task_list_executables` folders this contains both windows and linux executables. Please copy the required OS specific folder to a loaction of your comfort. 
 
 ### Run the Application
+For now Linux tasklist.sh has been created as a Command line Interface.

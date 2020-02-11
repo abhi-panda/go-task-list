@@ -31,7 +31,6 @@ type TaskHandlerInput struct {
 }
 
 var logFile *os.File
-var errors map[string]string = make(map[string]string)
 
 func mapToString(m map[string]string) string {
 	b := new(bytes.Buffer)
@@ -42,8 +41,8 @@ func mapToString(m map[string]string) string {
 }
 
 //ValidateTaskEntry function  validates the input before they are processed into the database
-func ValidateTaskEntry(t *TaskHandlerInput) bool {
-
+func ValidateTaskEntry(t *TaskHandlerInput) (bool, map[string]string) {
+	errors := make(map[string]string)
 	// Check if Task Title was filled out
 	if t.TaskTitle == "" {
 		errors["titleError"] = "The Task Title field is required."
@@ -59,15 +58,15 @@ func ValidateTaskEntry(t *TaskHandlerInput) bool {
 	}
 
 	if len(errors) > 0 {
-		return false
+		return false, errors
 	}
-	return true
+	return true, errors
 
 }
 
 //UpdateTask function performs updation task on the task list
 func UpdateTask(w http.ResponseWriter, r *http.Request, t *TaskHandlerInput, db *sql.DB) {
-	validInput := ValidateTaskEntry(t)
+	validInput, errors := ValidateTaskEntry(t)
 
 	if !validInput {
 		log.Error(mapToString(errors))
@@ -79,66 +78,72 @@ func UpdateTask(w http.ResponseWriter, r *http.Request, t *TaskHandlerInput, db 
 		unixdd := dd.Unix() + 66599
 		nt := models.NewTask(t.TaskTitle, unixdd, t.TaskDone)
 
-		var ct models.Task
-
-		if err := db.QueryRow("SELECT * FROM TaskList WHERE TaskTitle = ", nt.TaskTitle).Scan(&ct); err == sql.ErrNoRows {
+		ct := models.Task{TaskTitle: "", TimeCreatedModified: 0, DueDate: 0, TaskDone: false}
+		err := db.QueryRow("SELECT TimeCreatedModified, TaskTitle, DueDate, TaskDone FROM TaskList WHERE TaskTitle = '"+t.TaskTitle+"'").Scan(&ct.TimeCreatedModified, &ct.TaskTitle, &ct.DueDate, &ct.TaskDone)
+		if ct.TaskTitle == "" {
 			log.Error("Task with Title "+nt.TaskTitle+" Not Found for Update!", err)
 			http.Error(w, "Task with Title "+nt.TaskTitle+" Not Found for Update!", http.StatusInternalServerError)
-		}
-
-		log.Info("Record Found in DB!")
-		statement, err := db.Prepare("UPDATE TaskList SET DueDate = ?, TaskDone = ?,TimeCreatedModified = ? WHERE TaskTitle = ?")
-		if err != nil {
-			log.Error("Error Creating Update Statement", err)
-			http.Error(w, "Error Creating Update Statement", http.StatusInternalServerError)
-		}
-
-		_, execerr := statement.Exec(nt.DueDate, nt.TaskDone, nt.TimeCreatedModified, nt.TaskTitle)
-
-		if execerr != nil {
-			log.Error("Error Executing Update Statement", execerr)
-			http.Error(w, "Error Executing Update Statement", http.StatusInternalServerError)
 		} else {
-			log.Info("UPDATE Successful!!")
-			sm := successMessage{Message: "Update Completed Successfully for " + nt.TaskTitle}
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusNoContent)
-			json.NewEncoder(w).Encode(sm)
+			log.Info("Record Found in DB!")
+			statement, err := db.Prepare("UPDATE TaskList SET DueDate = ?, TaskDone = ?,TimeCreatedModified = ? WHERE TaskTitle = ?")
+			if err != nil {
+				log.Error("Error Creating Update Statement", err)
+				http.Error(w, "Error Creating Update Statement", http.StatusInternalServerError)
+			}
+
+			_, execerr := statement.Exec(nt.DueDate, nt.TaskDone, nt.TimeCreatedModified, nt.TaskTitle)
+
+			if execerr != nil {
+				log.Error("Error Executing Update Statement", execerr)
+				http.Error(w, "Error Executing Update Statement", http.StatusInternalServerError)
+			} else {
+				log.Info("UPDATE Successful!!")
+				sm := successMessage{Message: "Update Completed Successfully for " + nt.TaskTitle}
+				w.Header().Set("Content-Type", "application/json")
+				w.WriteHeader(http.StatusOK)
+				json.NewEncoder(w).Encode(sm)
+			}
 		}
 	}
-
 }
 
 //CreateTask function performs updation task on the task list
 func CreateTask(w http.ResponseWriter, r *http.Request, t *TaskHandlerInput, db *sql.DB) {
-	validInput := ValidateTaskEntry(t)
-
+	validInput, errors := ValidateTaskEntry(t)
 	if !validInput {
 		log.Error(mapToString(errors))
 		http.Error(w, mapToString(errors), http.StatusInternalServerError)
 	} else {
 		log.Info("Input Validated in Create Request")
-		dd, _ := time.Parse(layoutISO, t.DueDate)
-		unixdd := dd.Unix() + 66599
-		nt := models.NewTask(t.TaskTitle, unixdd, t.TaskDone)
-
-		statement, err := db.Prepare("INSERT INTO TaskList (TaskTitle, DueDate,TaskDone,TimeCreatedModified) VALUES (?, ?, ?, ?)")
-		if err != nil {
-			log.Error("Error Creating Create Statement", err)
-			http.Error(w, "Error Creating Create Statement", http.StatusInternalServerError)
-		}
-
-		_, execerr := statement.Exec(nt.TaskTitle, nt.DueDate, nt.TaskDone, nt.TimeCreatedModified)
-
-		if execerr != nil {
-			log.Error("Error Executing Create Statement", execerr)
-			http.Error(w, "Error Executing Create Statement", http.StatusInternalServerError)
+		ct := models.Task{TaskTitle: "", TimeCreatedModified: 0, DueDate: 0, TaskDone: false}
+		err := db.QueryRow("SELECT TimeCreatedModified, TaskTitle, DueDate, TaskDone FROM TaskList WHERE TaskTitle = '"+t.TaskTitle+"'").Scan(&ct.TimeCreatedModified, &ct.TaskTitle, &ct.DueDate, &ct.TaskDone)
+		if ct.TaskTitle != "" {
+			log.Error("Task with Title "+t.TaskTitle+" Found Already in DB!", err)
+			http.Error(w, "Task with Title "+t.TaskTitle+" Found Already in DB!", http.StatusInternalServerError)
 		} else {
-			log.Info("New Task Created!!")
-			sm := successMessage{Message: "Create Completed Successfully for " + nt.TaskTitle}
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusCreated)
-			json.NewEncoder(w).Encode(sm)
+
+			dd, _ := time.Parse(layoutISO, t.DueDate)
+			unixdd := dd.Unix() + 66599
+			nt := models.NewTask(t.TaskTitle, unixdd, t.TaskDone)
+
+			statement, err := db.Prepare("INSERT INTO TaskList (TaskTitle, DueDate,TaskDone,TimeCreatedModified) VALUES (?, ?, ?, ?)")
+			if err != nil {
+				log.Error("Error Creating Create Statement", err)
+				http.Error(w, "Error Creating Create Statement", http.StatusInternalServerError)
+			}
+
+			_, execerr := statement.Exec(nt.TaskTitle, nt.DueDate, nt.TaskDone, nt.TimeCreatedModified)
+
+			if execerr != nil {
+				log.Error("Error Executing Create Statement", execerr)
+				http.Error(w, "Error Executing Create Statement", http.StatusInternalServerError)
+			} else {
+				log.Info("New Task Created!!")
+				sm := successMessage{Message: "Create Completed Successfully for " + nt.TaskTitle}
+				w.Header().Set("Content-Type", "application/json")
+				w.WriteHeader(http.StatusCreated)
+				json.NewEncoder(w).Encode(sm)
+			}
 		}
 	}
 
@@ -147,30 +152,31 @@ func CreateTask(w http.ResponseWriter, r *http.Request, t *TaskHandlerInput, db 
 //DeleteTask function performs updation task on the task list
 func DeleteTask(w http.ResponseWriter, r *http.Request, t *TaskHandlerInput, db *sql.DB) {
 
-	var ct models.Task
-
-	if err := db.QueryRow("SELECT * FROM TaskList WHERE TaskTitle = ", t.TaskTitle).Scan(&ct); err == sql.ErrNoRows {
+	ct := models.Task{TaskTitle: "", TimeCreatedModified: 0, DueDate: 0, TaskDone: false}
+	err := db.QueryRow("SELECT TimeCreatedModified, TaskTitle, DueDate, TaskDone FROM TaskList WHERE TaskTitle = '"+t.TaskTitle+"'").Scan(&ct.TimeCreatedModified, &ct.TaskTitle, &ct.DueDate, &ct.TaskDone)
+	if ct.TaskTitle == "" {
 		log.Error("Task with Title "+t.TaskTitle+" Not Found for deletion!", err)
 		http.Error(w, "Task with Title "+t.TaskTitle+" Not Found for deletion!", http.StatusInternalServerError)
-	}
-	log.Info("Record Found in DB!")
-
-	statement, err := db.Prepare("DELETE FROM TaskList WHERE TaskTitle = ?")
-	if err != nil {
-		log.Error("Error Creating Delete Statement", err)
-		http.Error(w, "Error Creating Delete Statement", http.StatusInternalServerError)
-	}
-
-	_, execerr := statement.Exec(t.TaskTitle)
-	if execerr != nil {
-		log.Error("Error Executing Delete Statement", execerr)
-		http.Error(w, "Error Executing Delete Statement", http.StatusInternalServerError)
 	} else {
-		log.Info("Task Deleted!!")
-		sm := successMessage{Message: "Record Deleted with Task Title : " + t.TaskTitle}
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusAccepted)
-		json.NewEncoder(w).Encode(sm)
+		log.Info("Record Found in DB!")
+
+		statement, err := db.Prepare("DELETE FROM TaskList WHERE TaskTitle = ?")
+		if err != nil {
+			log.Error("Error Creating Delete Statement", err)
+			http.Error(w, "Error Creating Delete Statement", http.StatusInternalServerError)
+		}
+
+		_, execerr := statement.Exec(t.TaskTitle)
+		if execerr != nil {
+			log.Error("Error Executing Delete Statement", execerr)
+			http.Error(w, "Error Executing Delete Statement", http.StatusInternalServerError)
+		} else {
+			log.Info("Task Deleted!!")
+			sm := successMessage{Message: "Record Deleted with Task Title : " + t.TaskTitle}
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			json.NewEncoder(w).Encode(sm)
+		}
 	}
 
 }

@@ -29,9 +29,15 @@ func GetAllTasks(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 		rt := models.ConvertToResultantTask(t)
 		getAllResults = append(getAllResults, rt)
 	}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(getAllResults)
+	if len(getAllResults) == 0 {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("No Tasks Found!"))
+	} else {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(getAllResults)
+	}
 }
 
 //GetAllTodoTasks function gets all tasks from the task list db which are not completed
@@ -49,9 +55,16 @@ func GetAllTodoTasks(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 		rt := models.ConvertToResultantTask(t)
 		getAllResults = append(getAllResults, rt)
 	}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(getAllResults)
+	if len(getAllResults) == 0 {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("No Tasks Found for the criteria!"))
+	} else {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(getAllResults)
+	}
+
 }
 
 //GetByTodayTasks function gets all tasks from the task list db which are due by taday's date
@@ -73,9 +86,15 @@ func GetByTodayTasks(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 		rt := models.ConvertToResultantTask(t)
 		getAllResults = append(getAllResults, rt)
 	}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(getAllResults)
+	if len(getAllResults) == 0 {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("No Tasks Found for the criteria!"))
+	} else {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(getAllResults)
+	}
 }
 
 //GetOverdueTasks function gets all tasks from the task list db which are overdue
@@ -97,9 +116,15 @@ func GetOverdueTasks(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 		rt := models.ConvertToResultantTask(t)
 		getAllResults = append(getAllResults, rt)
 	}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(getAllResults)
+	if len(getAllResults) == 0 {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("No Tasks Found for the criteria!"))
+	} else {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(getAllResults)
+	}
 }
 
 //GetByTitle provides the searched task from the db with matching title
@@ -115,9 +140,14 @@ func GetByTitle(w http.ResponseWriter, r *http.Request, db *sql.DB, title string
 		rows.Scan(&t.TimeCreatedModified, &t.TaskTitle, &t.DueDate, &t.TaskDone)
 		rt := models.ConvertToResultantTask(t)
 		getResult = rt
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
-		json.NewEncoder(w).Encode(getResult)
+		if getResult.TaskTitle == "" {
+			log.Error("No Tasks Found for the criteria!", queryerr)
+			http.Error(w, "No Tasks Found for the criteria!", http.StatusInternalServerError)
+		} else {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			json.NewEncoder(w).Encode(getResult)
+		}
 	}
 
 }

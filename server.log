@@ -167,3 +167,185 @@ time="2020-02-11T13:35:17+05:30" level=info msg="Table Existed or New Table Crea
 time="2020-02-11T13:35:17+05:30" level=info msg="Server Started at :3000"
 time="2020-02-11T13:35:17+05:30" level=info msg="Please use https://localhost:3000"
 ::1 - - [11/Feb/2020:13:35:26 +0530] "GET /tasklist/Task1 HTTP/1.1" 200 88
+time="2020-02-11T16:47:07+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T16:47:07+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T16:47:07+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T16:47:55+05:30" level=error msg="Task with Title tct1 Found Already in DB!incomplete input"
+time="2020-02-11T16:47:55+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T16:47:55+05:30" level=info msg="New Task Created!!"
+127.0.0.1 - - [11/Feb/2020:16:47:55 +0530] "POST /tasklist HTTP/1.1" 201 95
+::1 - - [11/Feb/2020:16:48:17 +0530] "GET /tasklist/all HTTP/1.1" 200 627
+time="2020-02-11T17:05:13+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T17:05:13+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T17:05:13+05:30" level=info msg="Please use https://localhost:3000"
+::1 - - [11/Feb/2020:17:05:19 +0530] "GET /tasklist/all HTTP/1.1" 200 627
+time="2020-02-11T17:05:42+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T17:05:42+05:30" level=info msg="Task Deleted!!"
+::1 - - [11/Feb/2020:17:05:42 +0530] "DELETE /tasklist HTTP/1.1" 202 52
+time="2020-02-11T17:10:24+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T17:10:24+05:30" level=info msg="Task Deleted!!"
+::1 - - [11/Feb/2020:17:10:24 +0530] "DELETE /tasklist HTTP/1.1" 202 52
+time="2020-02-11T17:13:27+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T17:13:27+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T17:13:27+05:30" level=info msg="Please use https://localhost:3000"
+::1 - - [11/Feb/2020:17:13:39 +0530] "GET /tasklist/all HTTP/1.1" 200 539
+time="2020-02-11T17:13:47+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T17:13:47+05:30" level=info msg="Task Deleted!!"
+::1 - - [11/Feb/2020:17:13:47 +0530] "DELETE /tasklist HTTP/1.1" 202 52
+time="2020-02-11T17:17:30+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T17:17:30+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T17:17:30+05:30" level=info msg="Please use https://localhost:3000"
+::1 - - [11/Feb/2020:17:17:35 +0530] "GET /tasklist/all HTTP/1.1" 200 539
+time="2020-02-11T17:17:42+05:30" level=error msg="Task with Title tct1 Not Found for deletion!incomplete input"
+::1 - - [11/Feb/2020:17:17:42 +0530] "DELETE /tasklist HTTP/1.1" 500 45
+time="2020-02-11T17:23:23+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T17:23:23+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T17:23:23+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T17:26:41+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T17:26:41+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T17:26:41+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T17:27:00+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+::1 - - [11/Feb/2020:17:27:00 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T17:27:22+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+::1 - - [11/Feb/2020:17:27:22 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T17:27:33+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+::1 - - [11/Feb/2020:17:27:33 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T17:28:17+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+::1 - - [11/Feb/2020:17:28:17 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T17:41:31+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T17:41:31+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T17:41:31+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T17:41:50+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T17:41:50+05:30" level=error msg="Task with Title ta Found Already in DB!sql: no rows in result set"
+::1 - - [11/Feb/2020:17:41:50 +0530] "POST /tasklist HTTP/1.1" 500 40
+::1 - - [11/Feb/2020:17:42:03 +0530] "GET /tasklist/all HTTP/1.1" 200 539
+::1 - - [11/Feb/2020:17:42:16 +0530] "GET /tasklist/all HTTP/1.1" 200 539
+time="2020-02-11T17:43:47+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T17:43:47+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T17:43:47+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T17:44:00+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T17:44:00+05:30" level=info msg="New Task Created!!"
+::1 - - [11/Feb/2020:17:44:00 +0530] "POST /tasklist HTTP/1.1" 201 51
+time="2020-02-11T17:44:12+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T17:44:12+05:30" level=error msg="Task with Title ta Found Already in DB!<nil>"
+::1 - - [11/Feb/2020:17:44:12 +0530] "POST /tasklist HTTP/1.1" 500 40
+time="2020-02-11T17:44:48+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-11T17:44:48+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T17:44:49+05:30" level=info msg="UPDATE Successful!!"
+::1 - - [11/Feb/2020:17:44:48 +0530] "PUT /tasklist HTTP/1.1" 204 0
+time="2020-02-11T17:44:58+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-11T17:44:58+05:30" level=error msg="Task with Title ta1 Not Found for Update!sql: no rows in result set"
+::1 - - [11/Feb/2020:17:44:58 +0530] "PUT /tasklist HTTP/1.1" 500 42
+::1 - - [11/Feb/2020:17:45:16 +0530] "GET /tasklist/all HTTP/1.1" 200 624
+::1 - - [11/Feb/2020:17:45:25 +0530] "GET /tasklist/ta1 HTTP/1.1" 200 84
+time="2020-02-11T17:51:59+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T17:51:59+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T17:51:59+05:30" level=info msg="Please use https://localhost:3000"
+::1 - - [11/Feb/2020:17:52:06 +0530] "GET /tasklist/ta1 HTTP/1.1" 200 32
+::1 - - [11/Feb/2020:17:52:23 +0530] "GET /tasklist/today HTTP/1.1" 200 32
+::1 - - [11/Feb/2020:17:52:27 +0530] "GET /tasklist/all HTTP/1.1" 200 624
+::1 - - [11/Feb/2020:17:52:34 +0530] "GET /tasklist/overdue HTTP/1.1" 200 91
+::1 - - [11/Feb/2020:17:52:45 +0530] "GET /tasklist/all HTTP/1.1" 200 624
+time="2020-02-11T17:53:22+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T17:53:22+05:30" level=info msg="Task Deleted!!"
+::1 - - [11/Feb/2020:17:53:22 +0530] "DELETE /tasklist HTTP/1.1" 202 50
+time="2020-02-11T17:53:26+05:30" level=error msg="Task with Title ta Not Found for deletion!sql: no rows in result set"
+::1 - - [11/Feb/2020:17:53:26 +0530] "DELETE /tasklist HTTP/1.1" 500 43
+time="2020-02-11T17:53:37+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T17:53:37+05:30" level=info msg="New Task Created!!"
+::1 - - [11/Feb/2020:17:53:37 +0530] "POST /tasklist HTTP/1.1" 201 51
+time="2020-02-11T17:53:40+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T17:53:40+05:30" level=error msg="Task with Title ta Found Already in DB!<nil>"
+::1 - - [11/Feb/2020:17:53:40 +0530] "POST /tasklist HTTP/1.1" 500 40
+::1 - - [11/Feb/2020:17:53:52 +0530] "GET /tasklist/overdue HTTP/1.1" 200 177
+time="2020-02-11T17:54:40+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [11/Feb/2020:17:54:40 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T17:54:58+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T17:54:58+05:30" level=info msg="New Task Created!!"
+127.0.0.1 - - [11/Feb/2020:17:54:58 +0530] "POST /tasklist HTTP/1.1" 201 53
+time="2020-02-11T17:55:17+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T17:55:17+05:30" level=error msg="Task with Title tct1 Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:17:55:17 +0530] "POST /tasklist HTTP/1.1" 500 42
+time="2020-02-11T18:03:07+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T18:03:07+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T18:03:07+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T18:03:25+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T18:03:25+05:30" level=info msg="New Task Created!!"
+127.0.0.1 - - [11/Feb/2020:18:03:25 +0530] "POST /tasklist HTTP/1.1" 201 53
+::1 - - [11/Feb/2020:18:03:42 +0530] "GET /tasklist/all HTTP/1.1" 200 801
+time="2020-02-11T18:03:51+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T18:03:51+05:30" level=info msg="Task Deleted!!"
+::1 - - [11/Feb/2020:18:03:51 +0530] "DELETE /tasklist HTTP/1.1" 202 50
+time="2020-02-11T18:03:56+05:30" level=error msg="Task with Title ta Not Found for deletion!sql: no rows in result set"
+::1 - - [11/Feb/2020:18:03:56 +0530] "DELETE /tasklist HTTP/1.1" 500 43
+time="2020-02-11T18:04:02+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T18:04:03+05:30" level=info msg="Task Deleted!!"
+::1 - - [11/Feb/2020:18:04:02 +0530] "DELETE /tasklist HTTP/1.1" 202 52
+time="2020-02-11T18:04:09+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T18:04:09+05:30" level=info msg="Task Deleted!!"
+::1 - - [11/Feb/2020:18:04:09 +0530] "DELETE /tasklist HTTP/1.1" 202 52
+time="2020-02-11T18:05:57+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [11/Feb/2020:18:05:57 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T18:10:53+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [11/Feb/2020:18:10:53 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T18:16:01+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [11/Feb/2020:18:16:01 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T18:17:14+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [11/Feb/2020:18:17:14 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T18:17:36+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T18:17:36+05:30" level=info msg="New Task Created!!"
+127.0.0.1 - - [11/Feb/2020:18:17:36 +0530] "POST /tasklist HTTP/1.1" 201 52
+time="2020-02-11T18:17:53+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [11/Feb/2020:18:17:53 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T18:18:10+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T18:18:10+05:30" level=error msg="Task with Title tct Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:18:18:10 +0530] "POST /tasklist HTTP/1.1" 500 41
+time="2020-02-11T19:10:19+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T19:10:19+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T19:10:19+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T19:10:56+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T19:10:56+05:30" level=info msg="New Task Created!!"
+127.0.0.1 - - [11/Feb/2020:19:10:56 +0530] "POST /tasklist HTTP/1.1" 201 53
+time="2020-02-11T19:12:46+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T19:12:46+05:30" level=error msg="Task with Title tct1 Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:19:12:46 +0530] "POST /tasklist HTTP/1.1" 500 42
+time="2020-02-11T19:20:07+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T19:20:07+05:30" level=error msg="Task with Title tct1 Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:19:20:07 +0530] "POST /tasklist HTTP/1.1" 500 42
+time="2020-02-11T19:22:24+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T19:22:24+05:30" level=error msg="Task with Title tct1 Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:19:22:24 +0530] "POST /tasklist HTTP/1.1" 500 42
+time="2020-02-11T19:25:14+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T19:25:14+05:30" level=error msg="Task with Title tct1 Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:19:25:14 +0530] "POST /tasklist HTTP/1.1" 500 42
+time="2020-02-11T19:27:49+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T19:27:49+05:30" level=error msg="Task with Title tct1 Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:19:27:49 +0530] "POST /tasklist HTTP/1.1" 500 42
+time="2020-02-11T19:28:48+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T19:28:48+05:30" level=error msg="Task with Title tct1 Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:19:28:48 +0530] "POST /tasklist HTTP/1.1" 500 42
+time="2020-02-11T19:30:30+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T19:30:30+05:30" level=error msg="Task with Title tct1 Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:19:30:30 +0530] "POST /tasklist HTTP/1.1" 500 42
+time="2020-02-11T19:31:24+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T19:31:24+05:30" level=error msg="Task with Title tct1 Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:19:31:24 +0530] "POST /tasklist HTTP/1.1" 500 42
+time="2020-02-11T19:32:50+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T19:32:50+05:30" level=error msg="Task with Title tct1 Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:19:32:50 +0530] "POST /tasklist HTTP/1.1" 500 42
+time="2020-02-11T19:33:25+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T19:33:25+05:30" level=error msg="Task with Title tct1 Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:19:33:25 +0530] "POST /tasklist HTTP/1.1" 500 42
+time="2020-02-11T19:35:31+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T19:35:31+05:30" level=error msg="Task with Title tct1 Found Already in DB!<nil>"
+127.0.0.1 - - [11/Feb/2020:19:35:31 +0530] "POST /tasklist HTTP/1.1" 500 42
+127.0.0.1 - - [11/Feb/2020:20:48:40 +0530] "GET /tasklist/all HTTP/1.1" 200 714
+127.0.0.1 - - [11/Feb/2020:20:51:12 +0530] "GET /tasklist/all HTTP/1.1" 200 714
+127.0.0.1 - - [11/Feb/2020:21:00:30 +0530] "GET /tasklist/all HTTP/1.1" 200 714
+127.0.0.1 - - [11/Feb/2020:21:05:26 +0530] "GET /tasklist/all HTTP/1.1" 200 714
+127.0.0.1 - - [11/Feb/2020:21:13:35 +0530] "GET /tasklist/all HTTP/1.1" 200 714
+127.0.0.1 - - [11/Feb/2020:21:16:45 +0530] "GET /tasklist/all HTTP/1.1" 200 714
+127.0.0.1 - - [11/Feb/2020:21:49:07 +0530] "GET /tasklist/all HTTP/1.1" 200 714
+127.0.0.1 - - [11/Feb/2020:21:52:41 +0530] "GET /tasklist/all HTTP/1.1" 200 714
+127.0.0.1 - - [11/Feb/2020:22:57:35 +0530] "GET /tasklist/Task1 HTTP/1.1" 200 88
+127.0.0.1 - - [11/Feb/2020:22:59:25 +0530] "GET /tasklist/Task1 HTTP/1.1" 200 88

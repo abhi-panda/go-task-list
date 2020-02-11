@@ -1,0 +1,185 @@
+time="2020-02-11T16:19:43+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T16:19:43+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T16:19:43+05:30" level=info msg="Please use https://localhost:3000"
+127.0.0.1 - - [11/Feb/2020:16:24:07 +0530] "-i /tasklist HTTP/1.1" 405 0
+time="2020-02-11T16:27:23+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T16:27:23+05:30" level=info msg="New Task Created!!"
+127.0.0.1 - - [11/Feb/2020:16:27:23 +0530] "POST /tasklist HTTP/1.1" 201 63
+time="2020-02-11T16:29:48+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T16:29:48+05:30" level=info msg="New Task Created!!"
+127.0.0.1 - - [11/Feb/2020:16:29:48 +0530] "POST /tasklist HTTP/1.1" 201 64
+time="2020-02-11T16:31:18+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T16:31:18+05:30" level=info msg="New Task Created!!"
+127.0.0.1 - - [11/Feb/2020:16:31:18 +0530] "POST /tasklist HTTP/1.1" 201 64
+time="2020-02-11T16:33:01+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T16:33:01+05:30" level=info msg="Task Deleted!!"
+::1 - - [11/Feb/2020:16:33:01 +0530] "DELETE /tasklist HTTP/1.1" 202 63
+time="2020-02-11T16:33:11+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T16:33:11+05:30" level=info msg="Task Deleted!!"
+::1 - - [11/Feb/2020:16:33:11 +0530] "DELETE /tasklist HTTP/1.1" 202 63
+time="2020-02-11T16:33:18+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T16:33:19+05:30" level=info msg="Task Deleted!!"
+::1 - - [11/Feb/2020:16:33:18 +0530] "DELETE /tasklist HTTP/1.1" 202 63
+time="2020-02-11T16:33:22+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T16:33:22+05:30" level=info msg="Task Deleted!!"
+::1 - - [11/Feb/2020:16:33:22 +0530] "DELETE /tasklist HTTP/1.1" 202 63
+::1 - - [11/Feb/2020:16:33:43 +0530] "GET /tasklist/Task%20Curl%20Test3 HTTP/1.1" 200 84
+::1 - - [11/Feb/2020:16:34:35 +0530] "GET /tasklist/Taskxvfx HTTP/1.1" 200 84
+::1 - - [11/Feb/2020:16:34:44 +0530] "GET /tasklist/Task1 HTTP/1.1" 200 88
+::1 - - [11/Feb/2020:16:35:08 +0530] "GET /tasklist/all HTTP/1.1" 200 637
+time="2020-02-11T16:35:20+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T16:35:25+05:30" level=error msg="Error Executing Delete Statementdatabase is locked"
+::1 - - [11/Feb/2020:16:35:20 +0530] "DELETE /tasklist HTTP/1.1" 500 33
+time="2020-02-11T16:36:32+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T16:36:32+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T16:36:32+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T16:36:38+05:30" level=info msg="Record Found in DB!"
+time="2020-02-11T16:36:38+05:30" level=info msg="Task Deleted!!"
+::1 - - [11/Feb/2020:16:36:38 +0530] "DELETE /tasklist HTTP/1.1" 202 62
+time="2020-02-11T16:37:17+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T16:37:17+05:30" level=info msg="New Task Created!!"
+127.0.0.1 - - [11/Feb/2020:16:37:17 +0530] "POST /tasklist HTTP/1.1" 201 53
+time="2020-02-11T16:38:37+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [11/Feb/2020:16:38:37 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T16:39:07+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [11/Feb/2020:16:39:07 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T16:39:31+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [11/Feb/2020:16:39:31 +0530] "POST /tasklist HTTP/1.1" 500 58
+time="2020-02-11T23:30:52+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T23:30:52+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T23:30:52+05:30" level=info msg="Please use https://localhost:3000"
+127.0.0.1 - - [11/Feb/2020:23:33:35 +0530] "GET /tasklist/all HTTP/1.1" 200 627
+127.0.0.1 - - [11/Feb/2020:23:33:57 +0530] "GET /tasklist/today HTTP/1.1" 200 32
+127.0.0.1 - - [11/Feb/2020:23:34:10 +0530] "GET /tasklist/overdue HTTP/1.1" 200 179
+127.0.0.1 - - [11/Feb/2020:23:34:35 +0530] "GET /tasklist/querytasktitle HTTP/1.1" 200 32
+127.0.0.1 - - [11/Feb/2020:23:36:28 +0530] "GET /tasklist/querytasktitle HTTP/1.1" 200 32
+::1 - - [11/Feb/2020:23:39:39 +0530] "GET /tasklist/qhdc HTTP/1.1" 200 32
+time="2020-02-11T23:44:59+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T23:44:59+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T23:44:59+05:30" level=info msg="Please use https://localhost:3000"
+127.0.0.1 - - [11/Feb/2020:23:45:25 +0530] "GET /tasklist/Task1 HTTP/1.1" 200 88
+127.0.0.1 - - [11/Feb/2020:23:45:44 +0530] "GET /tasklist/alltodo HTTP/1.1" 200 357
+time="2020-02-11T23:46:28+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T23:46:33+05:30" level=error msg="Error Executing Create Statementdatabase is locked"
+127.0.0.1 - - [11/Feb/2020:23:46:28 +0530] "POST /tasklist HTTP/1.1" 500 33
+time="2020-02-11T23:47:02+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-11T23:47:02+05:30" level=info msg="Server Started at :3000"
+time="2020-02-11T23:47:02+05:30" level=info msg="Please use https://localhost:3000"
+time="2020-02-11T23:47:40+05:30" level=info msg="Input Validated in Create Request"
+time="2020-02-11T23:47:40+05:30" level=info msg="New Task Created!!"
+127.0.0.1 - - [11/Feb/2020:23:47:40 +0530] "POST /tasklist HTTP/1.1" 201 57
+127.0.0.1 - - [11/Feb/2020:23:47:48 +0530] "GET /tasklist/all HTTP/1.1" 200 719
+time="2020-02-11T23:49:01+05:30" level=error msg="No Tasks Found for the criteria!<nil>"
+127.0.0.1 - - [11/Feb/2020:23:49:01 +0530] "GET /tasklist/Task HTTP/1.1" 500 33
+127.0.0.1 - - [11/Feb/2020:23:57:13 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-11T23:57:14+05:30" level=error msg="Request Body not according to the contractinvalid character 'F' looking for beginning of value"
+time="2020-02-11T23:57:14+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\ntitleError=\"The Task Title field is required.\"\n"
+127.0.0.1 - - [11/Feb/2020:23:57:14 +0530] "PUT /tasklist HTTP/1.1" 500 148
+time="2020-02-12T00:04:04+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-12T00:04:04+05:30" level=info msg="Server Started at :3000"
+time="2020-02-12T00:04:04+05:30" level=info msg="Please use https://localhost:3000"
+127.0.0.1 - - [12/Feb/2020:00:04:45 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:04:45+05:30" level=error msg="Request Body not according to the contractinvalid character 'F' looking for beginning of value"
+time="2020-02-12T00:04:45+05:30" level=error msg="titleError=\"The Task Title field is required.\"\ndueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [12/Feb/2020:00:04:45 +0530] "PUT /tasklist HTTP/1.1" 500 148
+time="2020-02-12T00:14:18+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-12T00:14:18+05:30" level=info msg="Server Started at :3000"
+time="2020-02-12T00:14:18+05:30" level=info msg="Please use https://localhost:3000"
+127.0.0.1 - - [12/Feb/2020:00:14:48 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:14:48+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T00:14:48+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T00:14:53+05:30" level=error msg="Error Executing Update Statementdatabase is locked"
+127.0.0.1 - - [12/Feb/2020:00:14:48 +0530] "PUT /tasklist HTTP/1.1" 500 33
+time="2020-02-12T00:15:20+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-12T00:15:20+05:30" level=info msg="Server Started at :3000"
+time="2020-02-12T00:15:20+05:30" level=info msg="Please use https://localhost:3000"
+127.0.0.1 - - [12/Feb/2020:00:15:47 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:15:47+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T00:15:47+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T00:15:52+05:30" level=error msg="Error Executing Update Statementdatabase is locked"
+127.0.0.1 - - [12/Feb/2020:00:15:47 +0530] "PUT /tasklist HTTP/1.1" 500 33
+127.0.0.1 - - [12/Feb/2020:00:21:33 +0530] "GET /tasklist/all HTTP/1.1" 200 719
+127.0.0.1 - - [12/Feb/2020:00:21:51 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:21:51+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T00:21:51+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T00:21:56+05:30" level=error msg="Error Executing Update Statementdatabase is locked"
+127.0.0.1 - - [12/Feb/2020:00:21:51 +0530] "PUT /tasklist HTTP/1.1" 500 33
+127.0.0.1 - - [12/Feb/2020:00:22:41 +0530] "GET /tasklist/all HTTP/1.1" 200 719
+127.0.0.1 - - [12/Feb/2020:00:22:55 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:23:05+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T00:23:05+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T00:23:10+05:30" level=error msg="Error Executing Update Statementdatabase is locked"
+127.0.0.1 - - [12/Feb/2020:00:23:05 +0530] "PUT /tasklist HTTP/1.1" 500 33
+127.0.0.1 - - [12/Feb/2020:00:27:37 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:27:37+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T00:27:37+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T00:27:42+05:30" level=error msg="Error Executing Update Statementdatabase is locked"
+127.0.0.1 - - [12/Feb/2020:00:27:37 +0530] "PUT /tasklist HTTP/1.1" 500 33
+127.0.0.1 - - [12/Feb/2020:00:32:20 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:32:20+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T00:32:20+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T00:32:25+05:30" level=error msg="Error Executing Update Statementdatabase is locked"
+127.0.0.1 - - [12/Feb/2020:00:32:20 +0530] "PUT /tasklist HTTP/1.1" 500 33
+127.0.0.1 - - [12/Feb/2020:00:43:38 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:44:38+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T00:44:38+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T00:44:43+05:30" level=error msg="Error Executing Update Statementdatabase is locked"
+127.0.0.1 - - [12/Feb/2020:00:44:38 +0530] "PUT /tasklist HTTP/1.1" 500 33
+127.0.0.1 - - [12/Feb/2020:00:47:02 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:47:03+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T00:47:03+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T00:47:08+05:30" level=error msg="Error Executing Update Statementdatabase is locked"
+127.0.0.1 - - [12/Feb/2020:00:47:03 +0530] "PUT /tasklist HTTP/1.1" 500 33
+127.0.0.1 - - [12/Feb/2020:00:51:42 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:51:42+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T00:51:42+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T00:51:43+05:30" level=info msg="UPDATE Successful!!"
+127.0.0.1 - - [12/Feb/2020:00:51:42 +0530] "PUT /tasklist HTTP/1.1" 204 0
+127.0.0.1 - - [12/Feb/2020:00:52:28 +0530] "GET /tasklist/all HTTP/1.1" 200 719
+127.0.0.1 - - [12/Feb/2020:00:55:18 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:55:18+05:30" level=error msg="Request Body not according to the contractEOF"
+time="2020-02-12T00:55:18+05:30" level=error msg="titleError=\"The Task Title field is required.\"\ndueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [12/Feb/2020:00:55:18 +0530] "PUT /tasklist HTTP/1.1" 500 148
+127.0.0.1 - - [12/Feb/2020:00:56:33 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:56:33+05:30" level=error msg="Request Body not according to the contractEOF"
+time="2020-02-12T00:56:33+05:30" level=error msg="titleError=\"The Task Title field is required.\"\ndueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [12/Feb/2020:00:56:33 +0530] "PUT /tasklist HTTP/1.1" 500 148
+127.0.0.1 - - [12/Feb/2020:00:58:01 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T00:58:01+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [12/Feb/2020:00:58:01 +0530] "PUT /tasklist HTTP/1.1" 500 58
+127.0.0.1 - - [12/Feb/2020:01:04:59 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T01:05:00+05:30" level=error msg="dueDateError=\"The Due Date is not of pattern YYYY-MM-DD\"\n"
+127.0.0.1 - - [12/Feb/2020:01:05:00 +0530] "PUT /tasklist HTTP/1.1" 500 58
+127.0.0.1 - - [12/Feb/2020:01:06:40 +0530] "GET /tasklist/Task%20Sh1 HTTP/1.1" 200 92
+time="2020-02-12T01:06:41+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T01:06:41+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T01:06:41+05:30" level=info msg="UPDATE Successful!!"
+127.0.0.1 - - [12/Feb/2020:01:06:41 +0530] "PUT /tasklist HTTP/1.1" 204 0
+127.0.0.1 - - [12/Feb/2020:01:10:22 +0530] "GET /tasklist/alltodo HTTP/1.1" 200 357
+127.0.0.1 - - [12/Feb/2020:01:10:38 +0530] "GET /tasklist/tct1 HTTP/1.1" 200 88
+time="2020-02-12T01:10:38+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T01:10:38+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T01:10:38+05:30" level=info msg="UPDATE Successful!!"
+127.0.0.1 - - [12/Feb/2020:01:10:38 +0530] "PUT /tasklist HTTP/1.1" 204 0
+time="2020-02-12T01:11:05+05:30" level=error msg="No Tasks Found for the criteria!<nil>"
+::1 - - [12/Feb/2020:01:11:05 +0530] "GET /tasklist/qhdc HTTP/1.1" 500 33
+::1 - - [12/Feb/2020:01:11:16 +0530] "GET /tasklist/alltodo HTTP/1.1" 200 269
+time="2020-02-12T01:12:36+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T01:12:36+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T01:12:36+05:30" level=info msg="UPDATE Successful!!"
+::1 - - [12/Feb/2020:01:12:36 +0530] "PUT /tasklist HTTP/1.1" 204 0
+::1 - - [12/Feb/2020:01:12:47 +0530] "GET /tasklist/alltodo HTTP/1.1" 200 180
+time="2020-02-12T01:18:12+05:30" level=info msg="Table Existed or New Table Created!!"
+time="2020-02-12T01:18:12+05:30" level=info msg="Server Started at :3000"
+time="2020-02-12T01:18:12+05:30" level=info msg="Please use https://localhost:3000"
+127.0.0.1 - - [12/Feb/2020:01:19:00 +0530] "GET /tasklist/alltodo HTTP/1.1" 200 180
+127.0.0.1 - - [12/Feb/2020:01:19:19 +0530] "GET /tasklist/Task5 HTTP/1.1" 200 89
+time="2020-02-12T01:19:19+05:30" level=info msg="Input Validated in Update Request"
+time="2020-02-12T01:19:19+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T01:19:19+05:30" level=info msg="UPDATE Successful!!"
+127.0.0.1 - - [12/Feb/2020:01:19:19 +0530] "PUT /tasklist HTTP/1.1" 200 54
+127.0.0.1 - - [12/Feb/2020:01:20:58 +0530] "GET /tasklist/all HTTP/1.1" 200 715
+time="2020-02-12T01:21:14+05:30" level=info msg="Record Found in DB!"
+time="2020-02-12T01:21:14+05:30" level=info msg="Task Deleted!!"
+127.0.0.1 - - [12/Feb/2020:01:21:14 +0530] "DELETE /tasklist HTTP/1.1" 200 56
+127.0.0.1 - - [12/Feb/2020:01:21:29 +0530] "GET /tasklist/all HTTP/1.1" 200 624
