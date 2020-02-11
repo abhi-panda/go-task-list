@@ -37,7 +37,7 @@ In Body of the Request in json format provide :
 	"TaskDone":false
 }
 ```
-**NOTE** :
+**Note** :
 1. DueDate should always be in YYYY-MM-DD formatted string.
 2. TaskDone when first creating should always be false.
 
@@ -49,6 +49,7 @@ In Body of the Request in json format provide :
 - alltodo : This gets all the tasks that have not been completed yet
 - today : This gives you the list of tasks which are due today
 - overdue : This gives you the list of tasks which are past their due date.
+- <TaskTitle> : Provide a task title directly and this will return the task entity with that title
 
 ### POST (Create)
 `/tasklist` : send it along with the body to create a task.
