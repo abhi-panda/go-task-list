@@ -59,6 +59,13 @@ In Body of the Request in json format provide :
 ### DELETE 
 `/tasklist` : send it along with the body to delete the task.
 
+# Unit Test
+Unit test suite has been written for handlers and utilities package only as there lies the main functionality .
+To run these test suite , after cloning / downloading please traverse to the required folder and run
+```
+go test -v
+```
+
 # HOW TO
 Please find all the information on how to download and run the application here.
 If you want to look at the code please clone the repo and go :p ahead!
