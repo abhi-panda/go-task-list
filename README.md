@@ -86,6 +86,8 @@ In the above Repository , please find the `go_task_list_executables` folder .Thi
 For now , Linux specific shellscript tasklist.sh has been created as a Command line Interface. In Future similar .psh will be created for Windows OS. 
 Please make sure appropriate permissions are provided to the folder entirely and file manipulation is in purview.
 
+-> Please make sure you do `go get github.com/sirupsen/logrus` before running the application.
+
 To Start the Application , Please open two terminals and traverse to the folder where you have the downloaded executable folder
 
 START SERVER :
